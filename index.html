@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get Link Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .link-box {
+      margin-top: 20px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 14px;
+      width: 320px;
+      border: 1px solid #ccc;
+      border-radius: 6px 0 0 6px;
+      outline: none;
+    }
+
+    .copy-btn {
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover {
+      background-color: #218838;
+    }
+
+    .copied-text {
+      color: green;
+      font-size: 14px;
+      display: none;
+    }
+
+    .link-clickable {
+      margin-top: 10px;
+    }
+
+    .link-clickable a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .link-clickable a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button onclick="showLink()">Get Link</button>
+    <div class="link-box" id="linkBox">
+      <div class="input-group">
+        <input type="text" id="linkInput" value="https://chatgpt.com/share/68094da7-d5f8-8013-9bb1-7d9a4afa8005" readonly>
+        <button class="copy-btn" onclick="copyLink()">Copy</button>
+      </div>
+      <div class="copied-text" id="copiedText">Copied!</div>
+      <div class="link-clickable">
+        <a href="https://chatgpt.com/share/68094da7-d5f8-8013-9bb1-7d9a4afa8005" target="_blank">Click to Open Link</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showLink() {
+      document.getElementById('linkBox').style.display = 'flex';
+    }
+
+    function copyLink() {
+      const input = document.getElementById("linkInput");
+      input.select();
+      input.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+
+      const copiedText = document.getElementById("copiedText");
+      copiedText.style.display = "block";
+      setTimeout(() => {
+        copiedText.style.display = "none";
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
